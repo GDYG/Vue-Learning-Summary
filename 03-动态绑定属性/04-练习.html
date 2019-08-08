@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type="text/css">
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+<!--  <ul>-->
+<!--    <li v-bind:class="" v-for="(n,index) in movies" v-on:click="getClass(index)">{{n}}</li>-->
+
+<!--  </ul>-->
+  <ul>
+    <li v-for="(m, indexs) in movies" :class="{active: currentIndex === indexs}" @click="getStyle(indexs)">{{m}}</li>
+  </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['海王','火影忍者','海贼王','进击的巨人'],
+
+      // active: 'actives',
+      currentIndex: 0
+    },
+    methods: {
+      getStyle(indexs) {
+        this.currentIndex = indexs;
+      },
+      // getClass: function (index){
+      //   // this.isActive = !this.isActive;
+      //   const a = document.getElementsByTagName('li');
+      //   a[index].className = this.active;
+      // }
+    }
+  })
+</script>
+</body>
+</html>

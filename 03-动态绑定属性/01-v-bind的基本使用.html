@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <img v-bind:src="imageURL" alt="">
+  // 语法糖写法
+  <img :src="imageURL" alt="">
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      imageURL: 'https://img11.360buyimg.com/pop/s1180x940_jfs/t1/81490/10/5947/71066/5d400cfcEc193f950/f538bbc1e8e526dd.jpg.webp'
+    }
+  })
+</script>
+</body>
+</html>
