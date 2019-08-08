@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--1  .stop阻止事件的冒泡-->
+ <div @click="divClick">
+   aaaaaa
+   <button @click.stop="btnClick">btn</button>
+ </div>
+
+  <!--2  .prevent修饰符的使用-->
+  <br />
+  <form action="#">
+    <input type="submit" value="提交" @click.prevent="submitClick">
+  </form>
+
+  <!--3  .监听某个键盘的键帽-->
+  <input type="text" @keyup.enter="keyUp">
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: ''
+        },
+      methods: {
+          divClick() {
+            console.log('divClick');
+          },
+          btnClick(event) {
+            // event.stopPropagation();
+            console.log('btnClick');
+
+          },
+        submitClick() {
+            console.log('submitClick');
+        },
+        keyUp() {
+            console.log('keyUp');
+        }
+      }
+    })
+</script>
+</body>
+</html>

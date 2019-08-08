@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{counter}}</h2>
+  <button v-on:click="increment">+</button>  <!--如果不需要传入参数的时候 可以不加()， 如：increment()-->
+  <button v-on:click="decrement">-</button>
+  <button @click="getEvent('abc', $event)">-</button>  <!--如果需要同时传入某个参数，同时需要event时，可以通过$event传入事件-->
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      increment() {
+        this.counter++;
+      },
+      decrement() {
+        this.counter--;
+      },
+      getEvent(aaa, event) {
+        console.log(aaa, event);
+      }
+    }
+  })
+</script>
+</body>
+</html>
