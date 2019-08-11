@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <span v-if="type">
+    <lable for="username">用户账号：</lable>
+    <input type="text" placeholder="用户账号" id="username" key="username">
+    <!--加key解决当切换类型时，文本框里面内容还是原来输入的问题。
+    这是因为Vue在进行DOM渲染时，出于性能考虑，会尽可能复用已经存在的元素，而不是重新创建新的元素
+
+    在本例中，Vue内部会发现原来的input元素不再使用，直接作为else中的input来使用了。
+    -->
+    <button @click="getType()">切换登录方式</button>
+  </span>
+  <span v-else>
+    <lable for="uname">邮箱登录：</lable>
+    <input type="text" id="uname" placeholder="邮箱登录账号" key="uname">
+    <button @click="getType()">切换登录方式</button>
+  </span>
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      type: true
+    },
+    methods: {
+      getType() {
+        this.type = !this.type;
+
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+ <ul>
+   <li v-for="n in info">{{n}}</li>
+ </ul>
+  <button @click="btnClick()">btn</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            info: ['a','b','c','d']
+        },
+      methods: {
+          btnClick() {
+            // this.info.push('aaa');
+
+            //通过索引值修改数组中的元素方法不是响应式的
+            // this.info[0] = 'aaa'
+
+            //响应式的方法
+            // pop()  删除最后一位元素
+            // shift()  删除数组中的第一个元素
+            // unshift()  在数组的最前面添加元素
+
+            // splice()  可以在数组中插入元素，也可以在数组中删除元素，也可以在数组中替换元素
+            //splice(从第几个位置开始，从开始位置开始要删除几个元素（为0时是执行插入操作），'替换或者插入的值')
+
+            // sort()  数组排序
+            // reverse()  数组元素反转
+
+            //set(要修改的对象，索引值，修改后的值)
+            //vue.set(this.info ,0,'aaa')
+          }
+      }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+ <ul>
+   <li v-for="value in info">{{value}}</li> <!--获取的是对象的值--> <br>
+   <li v-for="(value,key) in info">{{value}}-{{key}}</li> <!--先获取对象的值，再获取对象的属性名--> <br>
+   <li v-for="(value,key,index) in info">{{value}}-{{key}}-{{index}}</li> <!--先获取对象的值，再获取对象的属性名，然后获取对象的索引值-->
+ </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            info: {
+              name: 'Jam',
+              age: 20,
+              height: 1.88
+            }
+        }
+    })
+</script>
+</body>
+</html>
