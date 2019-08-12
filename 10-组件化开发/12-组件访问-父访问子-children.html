@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+  <cpn ref="aaa"></cpn>
+  <cpn></cpn>
+  <button @click="btnClick">按钮</button>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>{{name}}</h2>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    methods: {
+      btnClick() {
+        //1 $children方式获取子组件数组
+        // console.log(this.$children[0].name);
+
+        //2 $refs方式 => 对象类型 默认是一个空对象
+        console.log(this.$refs.aaa.name); //拿到的是具体的属性值 ref='aaa' 的子组件对象
+
+      }
+
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            name: '我是子组件'
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

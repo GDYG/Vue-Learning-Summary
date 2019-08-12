@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn :number1="num1"
+       :number2="num2"
+       @numchange1="numChange1"
+       @numchange2="numChange2"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>number1:{{number1}}</h2>
+    <h2>znumber1: {{znumber1}}</h2>
+    <input type="text" :value="znumber1" @input="numInput1">
+    <br>
+    <h2>number2:{{number2}}</h2>
+    <h2>znumber2: {{znumber2}}</h2>
+    <input type="text" :value="znumber2" @input="numInput2">
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      num1: 0,
+      num2: 0
+    },
+    methods: {
+      numChange1(value) {
+        this.num1 = parseFloat(value);
+      },
+      numChange2(value) {
+        this.num2 = parseFloat(value);
+      }
+    },
+    components: {
+      cpn: {
+        template: '#cpn',
+        data() {
+          return {
+            znumber1: this.number1,
+            znumber2: this.number2
+          }
+        },
+        props: {
+          number1: Number,
+          number2: Number
+        },
+        methods: {
+          numInput1(event) {
+            this.znumber1 = event.target.value;
+            this.$emit('numchange1',this.znumber1);
+
+            this.znumber2 = this.znumber1 * 100;
+            this.$emit('numchange2',this.znumber2);
+          },
+          numInput2(event) {
+            this.znumber2 = event.target.value;
+            this.$emit('numchange2',this.znumber2);
+
+            this.znumber1 = this.znumber2 / 100;
+            this.$emit('numchange1',this.znumber1);
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

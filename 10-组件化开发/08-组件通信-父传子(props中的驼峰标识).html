@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn1 :c-message="message"></cpn1><!--Vue中不能识别驼峰命名 需要用 ‘-小写’来命名-->
+</div>
+
+<template id="cpn">
+  <div>
+    <h2>{{cMessage}}</h2>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  const cpn = {
+    template: '#cpn',
+    props: {
+      cMessage: {
+        type: Object,
+        default() {
+          return {}
+        }
+      }
+    }
+  }
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: {
+        name: 'HELLO',
+        age: 14,
+        height: 1.88
+      }
+    },
+    components: {
+      'cpn1': cpn
+    }
+  })
+</script>
+</body>
+</html>

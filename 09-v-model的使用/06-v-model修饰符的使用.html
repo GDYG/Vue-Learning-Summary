@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <!--1 lazy的使用 按下回车键时触发使用-->
+ <lable for="text">
+   <input type="text" id="text" v-model.lazy="message">
+   <h2>{{message}}</h2>
+ </lable>
+
+  <!--2 number的使用 输入数字时不需要进行数字的转换了-->
+  <input type="number" v-model.number="age">
+  <h2>{{typeof age}}</h2>
+
+  <!--3 trim 去除字符串空格-->
+</div>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        data: {
+            message: 'HELLO',
+            age: ''
+        }
+    })
+</script>
+</body>
+</html>

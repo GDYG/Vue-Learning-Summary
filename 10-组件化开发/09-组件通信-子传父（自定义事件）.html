@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn @itemclick="gclick"></cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <button v-for="item in list" @click="btnClick(item)">{{item.name}}</button>
+  </div>
+
+</template>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+  //定义子组件
+  const cpn = {
+    template: '#cpn',
+    data() {
+      return {
+        list: [
+            {id: 111, name: '商品类别'},
+            {id: 112, name: '手机类别'},
+            {id: 113, name: '家用电器'},
+            {id: 114, name: '生活用品'}
+        ]
+      }
+    },
+    methods: {
+      btnClick(item) {
+        this.$emit('itemclick',item)//向组件发送一个事件
+      }
+    }
+  }
+
+  //定义父组件
+  const app = new Vue({
+    el: '#app',
+    data: {
+
+    },
+    components: {
+      cpn
+    },
+    methods: {
+      gclick(item) {
+        console.log(item);
+      }
+    }
+  })
+</script>
+</body>
+</html>
