@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+ <cpn></cpn>
+
+ <cpn>
+   <!--获取子组件中的movies-->
+   <template slot-scope="slot">
+     <span>{{slot.data.join(' - ')}}</span>
+   </template>
+ </cpn>
+</div>
+
+<template id="cpn">
+  <div>
+    <slot :data="movies">
+      <ul>
+        <li v-for="item in movies">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script type="text/javascript">
+    const app = new Vue({
+        el: '#app',
+        components: {
+          cpn: {
+            template: '#cpn',
+            data() {
+              return {
+                movies: ['java','javascript','C++','Go','Ruby','Python']
+              }
+
+            }
+          }
+        }
+    })
+</script>
+</body>
+</html>
