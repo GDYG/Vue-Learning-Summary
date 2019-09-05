@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+Promise是异步编程的一种解决方案
+
+什么时候我们会处理异步事件呢？
+1、网络请求
+2、我们封装一个网络请求的函数。因为不能立即拿到结果所以不能像简单的表达式一样返回结果
+3、我们往往会传入另一个函数，在数据请求成功时，将数据通过传入的函数回调出去
+
+-->
+<script type="text/javascript">
+  new Promise((resolve,reject) => {
+    //在里面发送请求
+    setTimeout(() => {
+      //成功的时候调
+      resolve('HELLO');
+
+      //失败的时候调
+      reject('error message');
+    },1000)
+  }).then((data) => {
+    //在这里处理成功时的代码
+    console.log(data);
+    console.log(data);
+    console.log(data);
+    console.log(data);
+  }).catch((dt) => {
+    //在这里处理失败时的代码
+    console.log(dt);
+    console.log(dt);
+    console.log(dt);
+    console.log(dt);
+  })
+</script>
+</body>
+</html>
