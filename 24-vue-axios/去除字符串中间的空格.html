@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <input type="text" id="name">
+  <button @click="getString">button</button>
+  <h2>{{finString}}</h2>
+</div>
+
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+  const app = new Vue({
+    el: '#app',
+    data: {
+      names: ''
+    },
+    methods: {
+      getString() {
+        let a = document.getElementById('name').value;
+        let b = a.split(' ');
+        let result = '';
+        for(let i=0;i<b.length;i++){
+          result += b[i]
+        };
+        console.log(result);
+        this.names = result;
+      }
+    },
+    computed: {
+      finString() {
+        return this.names;
+      }
+    }
+  })
+</script>
+</body>
+</html>
